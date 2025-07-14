@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Carter | Photography Portfolio</title>
+    <meta name="description" content="Portfolio of Alex Carter, photography student showcasing landscape, portrait and street photography work">
+    <meta name="keywords" content="photography, portfolio, student photographer, landscape photography, portrait photography">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#1a365d",
+                        secondary: "#2c5282",
+                        accent: "#ecc94b"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap');
+        
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .active-nav {
+            border-bottom: 2px solid #ecc94b;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary" onclick="event.preventDefault(); navigateTo('home')">
+                <span class="text-accent">A</span>lex <span class="text-accent">C</span>arter
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="font-medium hover:text-accent transition-colors active-nav" onclick="event.preventDefault(); navigateTo('home')">Home</a>
+                <a href="#" class="font-medium hover:text-accent transition-colors" onclick="event.preventDefault(); navigateTo('portfolio')">Portfolio</a>
+                <a href="#" class="font-medium hover:text-accent transition-colors" onclick="event.preventDefault(); navigateTo('about')">About</a>
+                <a href="#" class="font-medium hover:text-accent transition-colors" onclick="event.preventDefault(); navigateTo('contact')">Contact</a>
+            </div>
+            <button class="md:hidden text-primary" id="mobile-menu-button">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-white shadow-lg" id="mobile-menu">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#" class="py-2 font-medium hover:text-accent transition-colors" onclick="event.preventDefault(); navigateTo('home')">Home</a>
+                <a href="#" class="py-2 font-medium hover:text-accent transition-colors" onclick="event.preventDefault(); navigateTo('portfolio')">Portfolio</a>
+                <a href="#" class="py-2 font-medium hover:text-accent transition-colors" onclick="event.preventDefault(); navigateTo('about')">About</a>
+                <a href="#" class="py-2 font-medium hover:text-accent transition-colors" onclick="event.preventDefault(); navigateTo('contact')">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="py-16 md:py-24 bg-gradient-to-r from-primary to-secondary text-white">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 font-serif">Capturing Moments, Creating Memories</h1>
+                    <p class="text-xl mb-6">I'm Alex Carter, a photography student passionate about telling stories through my lens.</p>
+                    <button class="bg-accent text-primary font-bold py-3 px-6 rounded hover:bg-yellow-500 transition-colors" onclick="event.preventDefault(); navigateTo('portfolio')">
+                        View My Work
+                    </button>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://picsum.photos/600/400?random=1" alt="Photographer at work" class="rounded-lg shadow-xl" loading="lazy">
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 font-serif">My Portfolio</h2>
+                
+                <!-- Portfolio Filter -->
+                <div class="flex justify-center mb-8">
+                    <div class="inline-flex rounded-md shadow-sm">
+                        <button class="px-4 py-2 text-sm font-medium rounded-l-lg bg-primary text-white" data-filter="all">
+                            All
+                        </button>
+                        <button class="px-4 py-2 text-sm font-medium bg-gray-200 hover:bg-gray-300" data-filter="landscape">
+                            Landscape
+                        </button>
+                        <button class="px-4 py-2 text-sm font-medium bg-gray-200 hover:bg-gray-300" data-filter="portrait">
+                            Portrait
+                        </button>
+                        <button class="px-4 py-2 text-sm font-medium rounded-r-lg bg-gray-200 hover:bg-gray-300" data-filter="street">
+                            Street
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Gallery Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="gallery-grid">
+                    <!-- Gallery items will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                        <img src="/Images/WhatsApp Image 2025-07-14 at 20.05.37_2815660f.jpg" alt="Alex Carter portrait" class="rounded-lg shadow-lg" loading="lazy">
+                    </div>
+                    <div class="md:w-2/3 md:pl-12">
+                        <h2 class="text-3xl font-bold mb-6 font-serif">About Me</h2>
+                        <p class="mb-4 text-lg">I'm a passionate photography student currently pursuing my degree at the School of Visual Arts. My journey with photography began when I received my first camera at age 15, and I've been capturing the world through my lens ever since.</p>
+                        <p class="mb-4 text-lg">My work focuses on authentic moments and the beauty in everyday life. I specialize in landscape and portrait photography, but I'm always exploring new styles and techniques to expand my creative horizons.</p>
+                        <p class="mb-6 text-lg">When I'm not behind the camera, you can find me hiking in nature, exploring new cities, or in the darkroom developing film.</p>
+                        
+                        <h3 class="text-xl font-bold mb-4">Education & Experience</h3>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <i class="fas fa-graduation-cap text-accent mt-1 mr-2"></i>
+                                <span>BFA in Photography, School of Visual Arts (Expected 2024)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-camera text-accent mt-1 mr-2"></i>
+                                <span>Freelance Photographer since 2020</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-trophy text-accent mt-1 mr-2"></i>
+                                <span>Winner, Young Photographers Award 2022</span>
+                            </li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-bold mb-4">Skills & Equipment</h3>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Portrait Photography</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Landscape Photography</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Street Photography</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Adobe Lightroom</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Adobe Photoshop</span>
+                            <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Film Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 font-serif">Get In Touch</h2>
+                
+                <div class="max-w-3xl mx-auto">
+                    <form class="space-y-6" id="contact-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-accent focus:border-accent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-accent focus:border-accent">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" name="subject" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-accent focus:border-accent">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-accent focus:border-accent"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit" class="bg-primary text-white font-bold py-3 px-6 rounded hover:bg-secondary transition-colors">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div class="mt-12 pt-8 border-t border-gray-200">
+                        <div class="flex flex-col md:flex-row justify-between items-center">
+                            <div class="mb-6 md:mb-0">
+                                <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                                <ul class="space-y-2">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-envelope text-accent mt-1 mr-2"></i>
+                                        <span>alex@example.com</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-phone-alt text-accent mt-1 mr-2"></i>
+                                        <span>(123) 456-7890</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-map-marker-alt text-accent mt-1 mr-2"></i>
+                                        <span>New York, NY</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-4">Follow Me</h3>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="text-gray-700 hover:text-accent transition-colors text-2xl" onclick="event.preventDefault()">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-700 hover:text-accent transition-colors text-2xl" onclick="event.preventDefault()">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-700 hover:text-accent transition-colors text-2xl" onclick="event.preventDefault()">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="text-gray-700 hover:text-accent transition-colors text-2xl" onclick="event.preventDefault()">
+                                        <i class="fab fa-500px"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-primary text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-2xl font-bold" onclick="event.preventDefault(); navigateTo('home')">
+                        <span class="text-accent">A</span>lex <span class="text-accent">C</span>arter
+                    </a>
+                    <p class="mt-2">Capturing the world one frame at a time.</p>
+                </div>
+                <div class="text-sm">
+                    <p>&copy; 2023 Alex Carter Photography. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Define gallery data
+        const galleryItems = [
+            { 
+                "id": 1, 
+                "title": "Mountain Sunrise", 
+                "category": "landscape", 
+                "src": "Images/IMG-20250712-WA0043.jpg", 
+                "alt": "Beautiful mountain landscape at sunrise with golden light"
+            },
+            { 
+                "id": 2, 
+                "title": "Urban Portrait", 
+                "category": "portrait", 
+                "src": "Images/IMG-20250712-WA0044.jpg", 
+                "alt": "Black and white portrait of a woman in urban setting"
+            },
+            { 
+                "id": 3, 
+                "title": "City Streets", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0045.jpg", 
+                "alt": "Busy city street with people walking and neon signs"
+            },
+            { 
+                "id": 4, 
+                "title": "Ocean Waves", 
+                "category": "landscape", 
+                "src": "Images/IMG-20250714-WA0039.jpg", 
+                "alt": "Dramatic ocean waves crashing against rocks at sunset"
+            },
+            { 
+                "id": 5, 
+                "title": "Studio Portrait", 
+                "category": "portrait", 
+                "src": "Images/IMG-20250714-WA0040.jpg", 
+                "alt": "Professional studio portrait with dramatic lighting"
+            },
+            { 
+                "id": 6, 
+                "title": "Market Scene", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0042.jpg", 
+                "alt": "Vibrant market scene with colorful fruits and vegetables"
+            },
+            { 
+                "id": 7, 
+                "title": "Forest Path", 
+                "category": "landscape", 
+                "src": "Images/IMG-20250712-WA0046.jpg", 
+                "alt": "Misty forest path with sunlight filtering through trees"
+            },
+            { 
+                "id": 8, 
+                "title": "Environmental Portrait", 
+                "category": "portrait", 
+                "src": "Images/IMG-20250712-WA0048.jpg", 
+                "alt": "Portrait of a farmer in his field at golden hour"
+            },
+            { 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0049.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },
+{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0050.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },
+
+            { 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0054.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0055.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0056.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0057.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0058.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0059.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0060.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0062.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0063.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0064.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0065.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0066.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250712-WA0067.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0032.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0033.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0034.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },
+
+            { 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0035.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0037.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0038.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0039.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0040.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/IMG-20250714-WA0043.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },{ 
+                "id": 9, 
+                "title": "Night Street", 
+                "category": "street", 
+                "src": "Images/WhatsApp Image 2025-07-14 at 14.41.40_92e4c462.jpg", 
+                "alt": "Long exposure of city street at night with light trails"
+            },
+            // },{ 
+            //     "id": 9, 
+            //     "title": "Night Street", 
+            //     "category": "street", 
+            //     "src": "https://picsum.photos/800/600?random=11", 
+            //     "alt": "Long exposure of city street at night with light trails"
+            // },{ 
+            //     "id": 9, 
+            //     "title": "Night Street", 
+            //     "category": "street", 
+            //     "src": "https://picsum.photos/800/600?random=11", 
+            //     "alt": "Long exposure of city street at night with light trails"
+            // },
+
+            
+        ];
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render gallery
+            renderGallery('all');
+            
+            // Setup filter buttons
+            document.querySelectorAll('[data-filter]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    renderGallery(filter);
+                    
+                    // Update active state
+                    document.querySelectorAll('[data-filter]').forEach(btn => {
+                        btn.classList.remove('bg-primary', 'text-white');
+                        btn.classList.add('bg-gray-200', 'hover:bg-gray-300');
+                    });
+                    
+                    this.classList.remove('bg-gray-200', 'hover:bg-gray-300');
+                    this.classList.add('bg-primary', 'text-white');
+                });
+            });
+            
+            // Mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                const menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
+            });
+            
+            // Contact form submission
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            });
+            
+            // Set initial active nav
+            setActiveNav('home');
+        });
+        
+        // Navigation function
+        function navigateTo(section) {
+            document.getElementById(section).scrollIntoView({ behavior: 'smooth' });
+            setActiveNav(section);
+            
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+        
+        // Set active navigation
+        function setActiveNav(section) {
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active-nav');
+            });
+            
+            if (section === 'home') {
+                document.querySelector('nav a[onclick*="home"]').classList.add('active-nav');
+            } else {
+                document.querySelector(`nav a[onclick*="${section}"]`).classList.add('active-nav');
+            }
+        }
+        
+        // Render gallery based on filter
+        function renderGallery(filter) {
+            const galleryGrid = document.getElementById('gallery-grid');
+            galleryGrid.innerHTML = '';
+            
+            const itemsToShow = filter === 'all' 
+                ? galleryItems 
+                : galleryItems.filter(item => item.category === filter);
+            
+            itemsToShow.forEach(item => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item rounded-lg overflow-hidden bg-white shadow-md';
+                galleryItem.innerHTML = `
+                    <img src="${item.src}" alt="${item.alt}" class="w-full h-64 object-cover" loading="lazy">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">${item.title}</h3>
+                        <span class="inline-block px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-700 capitalize">${item.category}</span>
+                    </div>
+                `;
+                galleryGrid.appendChild(galleryItem);
+            });
+        }
+    </script>
+</body>
+</html>

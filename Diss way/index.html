@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base target="_self">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Professional Portfolio</title>
+    <meta name="description" content="Professional portfolio showcasing my work, skills, and experience">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563EB",
+                        secondary: "#1E40AF",
+                        accent: "#10B981",
+                        dark: "#1F2937",
+                        light: "#F9FAFB"
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .active {
+            color: #2563EB;
+            font-weight: 600;
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .skill-bar {
+            transition: width 1.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-light text-dark">
+    <!-- Navigation -->
+    <header class="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold text-primary">YN</a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-primary transition">Home</a>
+                    <a href="#work" class="nav-link hover:text-primary transition">Work</a>
+                    <a href="#skills" class="nav-link hover:text-primary transition">Skills</a>
+                    <a href="#about" class="nav-link hover:text-primary transition">About</a>
+                    <a href="#contact" class="nav-link hover:text-primary transition">Contact</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-dark">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#home" class="block py-2 hover:text-primary">Home</a>
+                <a href="#work" class="block py-2 hover:text-primary">Work</a>
+                <a href="#skills" class="block py-2 hover:text-primary">Skills</a>
+                <a href="#about" class="block py-2 hover:text-primary">About</a>
+                <a href="#contact" class="block py-2 hover:text-primary">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                        <span class="text-primary">Anderson Ebo David</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl text-gray-600 mb-8">
+                        <span class="text-primary font-medium">A Phoptography Sudent At Design and Technology Institute</span> 
+                    </h2>
+                    <p class="text-lg text-gray-600 mb-10 max-w-lg">
+                        Creative and detail-oriented photographyStudent with skills in photography, videography, and graphic design. Seeking opportunities to capture compelling visuals and deliver high-quality content that tells a story and engages audiences across digital and print media.
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#work" class="bg-primary hover:bg-secondary text-white px-8 py-3 rounded-lg font-medium transition">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="border border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-lg font-medium transition">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0">
+                    <div class="relative">
+                        <div class="w-full h-full bg-primary/10 absolute -bottom-4 -right-4 rounded-xl"></div>
+                        <img src="https://picsum.photos/600/700?random=1" alt="Your Name" class="relative rounded-xl w-full max-w-md mx-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work/Portfolio Section -->
+    <section id="work" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Here are some of my selected projects that showcase my skills and expertise</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://picsum.photos/600/400?random=2" alt="Project 1" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 transition-opacity">
+                        <div class="text-center p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">E-Commerce Platform</h3>
+                            <p class="mb-4">A modern online store with seamless checkout experience</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-primary transition">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://picsum.photos/600/400?random=3" alt="Project 2" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 transition-opacity">
+                        <div class="text-center p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Mobile App UI</h3>
+                            <p class="mb-4">Fitness tracking application with custom dashboard</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-primary transition">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://picsum.photos/600/400?random=4" alt="Project 3" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 transition-opacity">
+                        <div class="text-center p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Corporate Website</h3>
+                            <p class="mb-4">Responsive redesign for a financial services company</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-primary transition">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://picsum.photos/600/400?random=5" alt="Project 4" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 transition-opacity">
+                        <div class="text-center p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Dashboard UI</h3>
+                            <p class="mb-4">Analytics dashboard with interactive data visualization</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-primary transition">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://picsum.photos/600/400?random=6" alt="Project 5" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 transition-opacity">
+                        <div class="text-center p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Brand Identity</h3>
+                            <p class="mb-4">Complete branding package for a startup</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-primary transition">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://picsum.photos/600/400?random=7" alt="Project 6" class="w-full h-64 object-cover">
+                    <div class="project-overlay absolute inset-0 bg-primary/90 flex items-center justify-center opacity-0 transition-opacity">
+                        <div class="text-center p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-2">Web Application</h3>
+                            <p class="mb-4">Custom CRM solution for small businesses</p>
+                            <a href="#" class="inline-block border border-white text-white px-4 py-2 rounded hover:bg-white hover:text-primary transition">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center text-primary font-medium hover:text-secondary transition">
+                    View All Projects
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The tools and technologies I use to bring ideas to life</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                <!-- Technical Skills -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-primary">Technical Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>6D Camera set up</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-primary h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Lighting Knowledge</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-primary h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Composition and Framing</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-primary h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Post-Processing Skills</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-primary h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Design Skills -->
+                <div>
+                    <h3 class="text-xl font-bold mb-6 text-primary">Design Skills</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>. Strong Visual Composition</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-primary h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Retouching of Pictures</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-primary h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Adobe Creative Suite</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-primary h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Prototyping</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="skill-bar bg-primary h-2 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tools & Technologies -->
+            <div class="mt-16">
+                <h3 class="text-xl font-bold mb-8 text-center text-primary">Tools & Technologies</h3>
+                <div class="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto">
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm w-24">
+                        <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
+                        <span class="text-sm">Adobe Premier pro</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm w-24">
+                        <i class="fab fa-css3-alt text-4xl text-blue-500 mb-2"></i>
+                        <span class="text-sm">Adobe after effect</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm w-24">
+                        <i class="fab fa-js text-4xl text-yellow-500 mb-2"></i>
+                        <span class="text-sm">Adobe Lightroom</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm w-24">
+                        <i class="fab fa-react text-4xl text-blue-400 mb-2"></i>
+                        <span class="text-sm">Skin finner</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm w-24">
+                        <i class="fab fa-node-js text-4xl text-green-500 mb-2"></i>
+                        <span class="text-sm">Adobe In-design</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm w-24">
+                        <i class="fab fa-figma text-4xl text-purple-500 mb-2"></i>
+                        <span class="text-sm">Figma</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm w-24">
+                        <i class="fas fa-database text-4xl text-blue-600 mb-2"></i>
+                        <span class="text-sm">Adobe Photoshop</span>
+                    </div>
+                    <div class="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm w-24">
+                        <i class="fab fa-git-alt text-4xl text-orange-600 mb-2"></i>
+                        <span class="text-sm">Adobe media encoder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://picsum.photos/600/700?random=8" alt="About Me" class="rounded-xl shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        I'm a passionate [Your Profession] with [X] years of experience creating exceptional digital experiences. My approach combines technical expertise with creative problem-solving to deliver solutions that meet both business objectives and user needs.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        When I'm not designing or coding, you can find me [personal interest/hobby], [another interest], or exploring the latest in technology and design trends.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h3 class="font-bold text-primary mb-2">Education</h3>
+                            <p class="text-gray-600">[Your Degree]</p>
+                            <p class="text-gray-600">[University Name]</p>
+                            <p class="text-gray-600">[Year]</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-primary mb-2">Experience</h3>
+                            <p class="text-gray-600">[Current Position]</p>
+                            <p class="text-gray-600">[Company Name]</p>
+                            <p class="text-gray-600">[Years]</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="inline-flex items-center text-primary font-medium hover:text-secondary transition">
+                        Download Resume
+                        <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Client Testimonials</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">What people I've worked with say about me</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/100?random=9" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Client Name</h4>
+                            <p class="text-gray-600 text-sm">Position, Company</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "Working with [Your Name] was an absolute pleasure. Their attention to detail and creative approach resulted in a website that perfectly represents our brand."
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/100?random=10" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Client Name</h4>
+                            <p class="text-gray-600 text-sm">Position, Company</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "[Your Name] delivered exceptional results on our project. Their technical skills and design sensibility created a product that exceeded our expectations."
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://picsum.photos/100?random=11" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Client Name</h4>
+                            <p class="text-gray-600 text-sm">Position, Company</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "The website [Your Name] created for us has significantly improved our online presence and customer engagement. Highly recommended!"
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+                <p class="max-w-2xl mx-auto opacity-90">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-dark p-12">
+                        <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-envelope text-xl mt-1 mr-4 opacity-90"></i>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="opacity-90">your.email@example.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-xl mt-1 mr-4 opacity-90"></i>
+                                <div>
+                                    <h4 class="font-bold">Phone</h4>
+                                    <p class="opacity-90">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-xl mt-1 mr-4 opacity-90"></i>
+                                <div>
+                                    <h4 class="font-bold">Location</h4>
+                                    <p class="opacity-90">Your City, Country</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-12">
+                            <h4 class="font-bold mb-4">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="opacity-90 hover:opacity-100 hover:text-accent transition">
+                                    <i class="fab fa-github text-2xl"></i>
+                                </a>
+                                <a href="#" class="opacity-90 hover:opacity-100 hover:text-accent transition">
+                                    <i class="fab fa-linkedin text-2xl"></i>
+                                </a>
+                                <a href="#" class="opacity-90 hover:opacity-100 hover:text-accent transition">
+                                    <i class="fab fa-twitter text-2xl"></i>
+                                </a>
+                                <a href="#" class="opacity-90 hover:opacity-100 hover:text-accent transition">
+                                    <i class="fab fa-dribbble text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-12 text-dark">
+                        <form>
+                            <div class="mb-6">
+                                <label for="name" class="block font-medium mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block font-medium mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="subject" class="block font-medium mb-2">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block font-medium mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-medium py-3 px-6 rounded-lg transition">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="text-2xl font-bold">Your Name</a>
+                    <p class="mt-2 opacity-90">Creating digital experiences that make an impact.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="opacity-90 hover:opacity-100 hover:text-primary transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="opacity-90 hover:opacity-100 hover:text-primary transition">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="#" class="opacity-90 hover:opacity-100 hover:text-primary transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="opacity-90 hover:opacity-100 hover:text-primary transition">
+                        <i class="fab fa-dribbble text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center opacity-90">
+                <p>&copy; <span id="current-year"></span> Your Name. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this
